@@ -1,9 +1,9 @@
 'use client'
-
+ 
 import { useEffect, useRef, useState } from 'react'
-
+ 
 function useCountUp(target: number, duration = 2000, start = false) {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(target)
   useEffect(() => {
     if (!start) return
     let startTime: number | null = null
@@ -17,7 +17,7 @@ function useCountUp(target: number, duration = 2000, start = false) {
   }, [target, duration, start])
   return count
 }
-
+ 
 function StatCounter({
   value,
   label,
@@ -41,16 +41,16 @@ function StatCounter({
     </div>
   )
 }
-
+ 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null)
   const [started, setStarted] = useState(false)
-
+ 
   useEffect(() => {
     const timer = setTimeout(() => setStarted(true), 600)
     return () => clearTimeout(timer)
   }, [])
-
+ 
   return (
     <section
       ref={ref}
@@ -86,17 +86,17 @@ export default function Hero() {
           {'framer.publish()'}
         </div>
       </div>
-
+ 
       {/* Main content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         {/* Animated badge */}
         <div className="inline-flex items-center gap-2 bg-[#1a1a1a] border border-[#e8b94f]/20 rounded-full px-4 py-2 mb-8">
           <span className="pulse-dot w-2 h-2 rounded-full bg-red-500 flex-shrink-0" />
           <span className="text-[#f5f0e8]/80 text-xs md:text-sm font-medium tracking-wide">
-            Lanse Kounye a · Fondatè Espesyal
+            Lanse Kounye a · Fondatè Spesyal
           </span>
         </div>
-
+ 
         {/* Headline */}
         <h1 className="font-[family-name:var(--font-syne)] font-extrabold leading-none tracking-tight mb-6">
           <span className="block text-5xl md:text-7xl lg:text-8xl text-[#f5f0e8] text-balance">
@@ -106,13 +106,13 @@ export default function Hero() {
             Kreye App ak AI
           </span>
         </h1>
-
+ 
         {/* Subtitle */}
         <p className="text-[#f5f0e8]/65 text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed mb-10 text-pretty">
           Aprann kreye sit entènèt ak aplikasyon pwofesyonèl ak zouti AI Bolt.new, V0, Lovable,
           Framer  menm si ou pa janm kòde yon sèl liy.
         </p>
-
+ 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
           <a
@@ -130,7 +130,7 @@ export default function Hero() {
             Wè Kou a
           </a>
         </div>
-
+ 
         {/* Stats */}
         <div className="border-t border-[#222] pt-10">
           <div className="flex flex-wrap justify-center gap-6 md:gap-0 md:divide-x md:divide-[#222]">
@@ -149,3 +149,4 @@ export default function Hero() {
     </section>
   )
 }
+ 

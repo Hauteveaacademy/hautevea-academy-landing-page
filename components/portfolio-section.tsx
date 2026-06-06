@@ -1,13 +1,13 @@
 'use client'
-
+ 
 import Image from 'next/image'
 import { useScrollAnimation } from '@/hooks/use-scroll-animation'
-
+ 
 const projects = [
   {
     tag: 'Sit Entènèt',
     title: 'Sit Restoran Pwofesyonèl',
-    desc: 'Kreye ak Bolt.new an 2 èdtan',
+    desc: 'Kreye ak Bolt.new an 1 èdtan',
     image: '/images/restaurant.jpg',
   },
   {
@@ -36,26 +36,26 @@ const projects = [
   },
   {
     tag: 'Aplikasyon',
-    title: 'Money transfer apps',
+    title: 'Money Transfer App',
     desc: 'Kreye ak Lovable + Supabase',
     image: '/images/saas.jpg',
   },
 ]
-
+ 
 export default function PortfolioSection() {
   const headRef = useScrollAnimation(0)
   const noteRef = useScrollAnimation(100)
-
+ 
   return (
     <section className="py-24 px-6 bg-[#0d0d0d]" id="portfolio">
       <div className="max-w-5xl mx-auto">
-
+ 
         {/* Heading */}
         <div ref={headRef} className="fade-up text-center mb-14">
           <span className="inline-block text-[#e8b94f] text-xs font-bold uppercase tracking-[0.2em] mb-4 border border-[#e8b94f]/30 px-4 py-1.5 rounded-full">
             Sa ou pral kreye
           </span>
-
+ 
           <h2 className="font-[family-name:var(--font-syne)] font-extrabold text-4xl md:text-5xl text-[#f5f0e8]">
             Egzanp{' '}
             <span className="text-[#e8b94f]">
@@ -63,7 +63,7 @@ export default function PortfolioSection() {
             </span>
           </h2>
         </div>
-
+ 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
@@ -74,7 +74,7 @@ export default function PortfolioSection() {
             />
           ))}
         </div>
-
+ 
         {/* Note */}
         <div
           ref={noteRef}
@@ -84,12 +84,12 @@ export default function PortfolioSection() {
             <span>Pwojè reyèl kliyan</span>
           </p>
         </div>
-
+ 
       </div>
     </section>
   )
 }
-
+ 
 function ProjectCard({
   project,
   delay,
@@ -98,39 +98,43 @@ function ProjectCard({
   delay: number
 }) {
   const ref = useScrollAnimation(delay)
-
+ 
   return (
     <div
       ref={ref}
       className="fade-up group bg-[#111] border border-[#222] hover:border-[#e8b94f]/30 rounded-2xl overflow-hidden transition-all duration-300"
     >
-
+ 
       {/* Image */}
       <div className="relative w-full h-[280px] overflow-hidden">
         <Image
           src={project.image}
           alt={project.title}
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover group-hover:scale-105 transition-transform duration-500"
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/yQALCAABAAEBAREA/8wABgAQEAX/2gAIAQEAAD8AKp//2Q=="
         />
       </div>
-
+ 
       {/* Content */}
       <div className="px-5 py-4 flex flex-col gap-2">
-
+ 
         <span className="self-start bg-[#e8b94f]/10 border border-[#e8b94f]/25 text-[#e8b94f] text-xs font-bold px-3 py-1 rounded-full tracking-wide">
           {project.tag}
         </span>
-
+ 
         <h3 className="font-[family-name:var(--font-syne)] font-bold text-[#f5f0e8] text-base">
           {project.title}
         </h3>
-
+ 
         <p className="text-[#f5f0e8]/50 text-sm">
           {project.desc}
         </p>
-
+ 
       </div>
     </div>
   )
 }
+ 

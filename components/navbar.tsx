@@ -13,7 +13,7 @@ export default function Navbar() {
   }, [])
 
   const links = [
-    { label: 'À propos', href: '#solution' },
+    { label: 'Apwopo', href: '#solution' },
     { label: 'Pwogram', href: '#curriculum' },
     { label: 'Pri', href: '#pricing' },
     { label: 'FAQ', href: '#faq' },

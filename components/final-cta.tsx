@@ -17,7 +17,7 @@ export default function FinalCTA() {
       <div className="relative z-10 max-w-3xl mx-auto text-center" ref={ref}>
         <div className="fade-up">
           <h2 className="font-[family-name:var(--font-syne)] font-extrabold text-5xl md:text-6xl lg:text-7xl text-[#f5f0e8] leading-tight text-balance mb-6">
-            Prèt pou{' '}
+            Prè pou{' '}
             <span className="text-[#e8b94f]">Kòmanse Kreye?</span>
           </h2>
           <p className="text-[#f5f0e8]/55 text-lg md:text-xl max-w-xl mx-auto leading-relaxed mb-10 text-pretty">
