@@ -1,55 +1,9 @@
 'use client'
  
-import { useEffect, useRef, useState } from 'react'
- 
-function useCountUp(target: number, duration = 2000, start = false) {
-  const [count, setCount] = useState(target)
-  useEffect(() => {
-    if (!start) return
-    let startTime: number | null = null
-    const step = (timestamp: number) => {
-      if (!startTime) startTime = timestamp
-      const progress = Math.min((timestamp - startTime) / duration, 1)
-      setCount(Math.floor(progress * target))
-      if (progress < 1) requestAnimationFrame(step)
-    }
-    requestAnimationFrame(step)
-  }, [target, duration, start])
-  return count
-}
- 
-function StatCounter({
-  value,
-  label,
-  prefix = '',
-  suffix = '',
-  started,
-}: {
-  value: number
-  label: string
-  prefix?: string
-  suffix?: string
-  started: boolean
-}) {
-  const count = useCountUp(value, 1800, started)
-  return (
-    <div className="text-center px-4">
-      <div className="font-[family-name:var(--font-syne)] font-extrabold text-2xl md:text-3xl text-[#e8b94f]">
-        {prefix}{count}{suffix}
-      </div>
-      <div className="text-[#f5f0e8]/50 text-xs md:text-sm mt-1 font-medium">{label}</div>
-    </div>
-  )
-}
+import { useRef } from 'react'
  
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null)
-  const [started, setStarted] = useState(false)
- 
-  useEffect(() => {
-    const timer = setTimeout(() => setStarted(true), 600)
-    return () => clearTimeout(timer)
-  }, [])
  
   return (
     <section
@@ -134,13 +88,20 @@ export default function Hero() {
         {/* Stats */}
         <div className="border-t border-[#222] pt-10">
           <div className="flex flex-wrap justify-center gap-6 md:gap-0 md:divide-x md:divide-[#222]">
-            <StatCounter value={5} label="Leson" started={started} />
-            <StatCounter value={8} label="8h+ Kontni" suffix="h+" started={started} />
-            <StatCounter value={0} label="$0 Kode Nesesè" prefix="$" started={started} />
             <div className="text-center px-4">
-              <div className="font-[family-name:var(--font-syne)] font-extrabold text-2xl md:text-3xl text-[#e8b94f]">
-                ∞
-              </div>
+              <div className="font-[family-name:var(--font-syne)] font-extrabold text-2xl md:text-3xl text-[#e8b94f]">5</div>
+              <div className="text-[#f5f0e8]/50 text-xs md:text-sm mt-1 font-medium">Leson</div>
+            </div>
+            <div className="text-center px-4">
+              <div className="font-[family-name:var(--font-syne)] font-extrabold text-2xl md:text-3xl text-[#e8b94f]">8h+</div>
+              <div className="text-[#f5f0e8]/50 text-xs md:text-sm mt-1 font-medium">Kontni</div>
+            </div>
+            <div className="text-center px-4">
+              <div className="font-[family-name:var(--font-syne)] font-extrabold text-2xl md:text-3xl text-[#e8b94f]">$0</div>
+              <div className="text-[#f5f0e8]/50 text-xs md:text-sm mt-1 font-medium">Kode Nesesè</div>
+            </div>
+            <div className="text-center px-4">
+              <div className="font-[family-name:var(--font-syne)] font-extrabold text-2xl md:text-3xl text-[#e8b94f]">∞</div>
               <div className="text-[#f5f0e8]/50 text-xs md:text-sm mt-1 font-medium">Aksè pou Vi</div>
             </div>
           </div>
